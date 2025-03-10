@@ -1,0 +1,418 @@
+/* Buttons CSS */
+
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+  font-size: var(--font-size-base);
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Button sizes */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: var(--border-radius-lg);
+}
+
+/* Primary button */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary button */
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--color-secondary-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Outline button */
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* Secondary outline button */
+.btn-outline-secondary {
+  background-color: transparent;
+  color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+  background-color: var(--color-secondary);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-outline-secondary:active {
+  transform: translateY(0);
+}
+
+/* Text button (ghost button) */
+.btn-text {
+  background-color: transparent;
+  color: var(--color-primary);
+  padding: 0.5rem 0.75rem;
+}
+
+.btn-text:hover,
+.btn-text:focus {
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-text:active {
+  transform: translateY(0);
+}
+
+/* CTA button */
+.btn-cta {
+  background-color: var(--color-accent);
+  color: var(--color-text-dark);
+  padding: 1rem 2.5rem;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.125rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-cta:hover,
+.btn-cta:focus {
+  background-color: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cta:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon button */
+.btn-icon-only {
+  padding: 0.75rem;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.btn-icon-only.btn-sm {
+  padding: 0.5rem;
+}
+
+.btn-icon-only.btn-lg {
+  padding: 1rem;
+}
+
+/* Button with icon */
+.btn i,
+.btn svg {
+  margin-right: 0.5rem;
+}
+
+.btn.icon-right i,
+.btn.icon-right svg {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Block button (full width) */
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* Button group */
+.btn-group {
+  display: inline-flex;
+}
+
+.btn-group .btn {
+  border-radius: 0;
+}
+
+.btn-group .btn:first-child {
+  border-top-left-radius: var(--border-radius-md);
+  border-bottom-left-radius: var(--border-radius-md);
+}
+
+.btn-group .btn:last-child {
+  border-top-right-radius: var(--border-radius-md);
+  border-bottom-right-radius: var(--border-radius-md);
+}
+
+/* Pill button */
+.btn-pill {
+  border-radius: 50px;
+}
+
+/* Transparent button */
+.btn-transparent {
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.btn-transparent:hover,
+.btn-transparent:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Success button */
+.btn-success {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: darken(var(--color-success), 10%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Danger/Error button */
+.btn-danger {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: darken(var(--color-error), 10%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Warning button */
+.btn-warning {
+  background-color: var(--color-warning);
+  color: var(--color-text-dark);
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+  background-color: darken(var(--color-warning), 10%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Info button */
+.btn-info {
+  background-color: var(--color-info);
+  color: white;
+}
+
+.btn-info:hover,
+.btn-info:focus {
+  background-color: darken(var(--color-info), 10%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Close button (for modals, alerts) */
+.close-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--color-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-error);
+}
+
+/* App download buttons */
+.app-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  transition: all var(--transition-normal);
+}
+
+.app-button:hover,
+.app-button:focus {
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.app-button i {
+  font-size: 1.75rem;
+  margin-right: 0.75rem;
+}
+
+.app-button span {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.app-button small {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Filter buttons */
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  margin: 0 0.25rem 0.5rem;
+}
+
+.filter-btn:hover,
+.filter-btn:focus {
+  background-color: var(--color-card-bg);
+  border-color: var(--color-primary);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* Delivery app buttons */
+.delivery-app {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background-color: white;
+  color: var(--color-text-dark);
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.delivery-app:hover,
+.delivery-app:focus {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.delivery-app i {
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+/* Add to cart button */
+.add-to-cart-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Checkout button */
+.btn-checkout {
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Responsive buttons */
+@media (max-width: 576px) {
+  .btn {
+    padding: 0.625rem 1.25rem;
+  }
+
+  .btn-lg {
+    padding: 0.875rem 1.75rem;
+  }
+
+  .app-button {
+    padding: 0.625rem 1rem;
+  }
+
+  .app-button i {
+    font-size: 1.5rem;
+  }
+
+  .delivery-app {
+    padding: 0.625rem 1rem;
+    margin-right: 0.75rem;
+  }
+}

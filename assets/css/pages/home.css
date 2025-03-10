@@ -1,0 +1,20 @@
+/**
+ * home.css
+ * Estilos específicos para a página inicial
+ */
+
+.hero-section {
+  padding: 5rem 0;
+  background-color: #e9ecef;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.feature-list {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+.feature-list li {
+  margin-bottom: 0.5rem;
+}

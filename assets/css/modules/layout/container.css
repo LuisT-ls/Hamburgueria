@@ -1,0 +1,243 @@
+/* Container CSS */
+
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Container sizes for different breakpoints */
+@media (max-width: 1200px) {
+  .container {
+    max-width: var(--container-lg);
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: var(--container-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: var(--container-sm);
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* Container fluid (full width) */
+.container-fluid {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Container with no padding */
+.container-no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Container with narrow width */
+.container-narrow {
+  max-width: var(--container-md);
+}
+
+/* Container with extra wide width */
+.container-wide {
+  max-width: var(--container-xxl);
+}
+
+/* Content container for sections */
+.content-container {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+/* Full-height container */
+.full-height-container {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centered container */
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container with spacing */
+.spaced-container {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Container with background */
+.bg-container {
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Card container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Two column container */
+.two-column-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .two-column-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Three column container */
+.three-column-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .three-column-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .three-column-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Four column container */
+.four-column-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .four-column-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .four-column-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .four-column-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Asymmetric container (1/3 + 2/3) */
+.asymmetric-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .asymmetric-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reversed asymmetric container (2/3 + 1/3) */
+.asymmetric-container-reversed {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .asymmetric-container-reversed {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Container with background image */
+.bg-image-container {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--color-text-white);
+}
+
+.bg-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-image-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Container with border */
+.bordered-container {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 2rem;
+}
+
+/* Container with curved top/bottom */
+.curved-top-container {
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  overflow: hidden;
+}
+
+.curved-bottom-container {
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  overflow: hidden;
+}
+
+/* Container with side padding only */
+.horizontal-padded-container {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Container with vertical padding only */
+.vertical-padded-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 0;
+  padding-right: 0;
+}

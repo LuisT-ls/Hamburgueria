@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BurgerHouse - Hambúrgueres Artesanais</title>
+    <meta
+      name="description"
+      content="Hamburgueria artesanal com os melhores sabores da cidade. Faça seu pedido online!"
+    />
+    <link rel="icon" href="./assets/icons/favicon.ico" />
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <!-- CSS da página inicial -->
+    <link rel="stylesheet" href="./assets/css/pages/home.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="site-wrapper">
+      <!-- Header -->
+      <header class="header">
+        <div class="container">
+          <div class="header-content">
+            <div class="logo">
+              <a href="index.html">
+                <h1><span class="highlight">Burger</span>House</h1>
+              </a>
+            </div>
+            <nav class="main-nav">
+              <ul class="nav-list">
+                <li class="nav-item">
+                  <a href="#" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#menu" class="nav-link">Cardápio</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#promocoes" class="nav-link">Promoções</a>
+                </li>
+                <li class="nav-item">
+                  <a href="./pages/sobre.html" class="nav-link">Sobre Nós</a>
+                </li>
+                <li class="nav-item">
+                  <a href="./pages/contato.html" class="nav-link">Contato</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="header-buttons">
+              <button id="theme-toggle" class="btn-icon" title="Alternar tema">
+                <i class="fas fa-moon"></i>
+              </button>
+              <a href="#order-now" class="btn btn-primary btn-order"
+                >Pedir Agora</a
+              >
+              <button class="btn-cart" id="cart-button">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+              </button>
+              <button class="menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Menu Mobile -->
+      <div class="mobile-menu" id="mobile-menu">
+        <nav>
+          <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#menu">Cardápio</a></li>
+            <li><a href="#promocoes">Promoções</a></li>
+            <li><a href="./pages/sobre.html">Sobre Nós</a></li>
+            <li><a href="./pages/contato.html">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Carrinho de compras -->
+      <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+          <div class="cart-header">
+            <h3>Seu Pedido</h3>
+            <button class="btn-icon close-cart" id="close-cart">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="cart-items" id="cart-items">
+            <!-- Itens do carrinho serão adicionados aqui via JavaScript -->
+            <div class="empty-cart">
+              <i class="fas fa-shopping-cart"></i>
+              <p>Seu carrinho está vazio</p>
+            </div>
+          </div>
+          <div class="cart-footer">
+            <div class="cart-total">
+              <span>Total:</span>
+              <span id="cart-total-price">R$ 0,00</span>
+            </div>
+            <button
+              class="btn btn-primary btn-checkout"
+              id="checkout-button"
+              disabled
+            >
+              Finalizar Pedido
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de Finalização de Pedido -->
+      <div class="modal" id="checkout-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Finalizar Pedido</h3>
+            <button class="close-modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="checkout-form">
+              <div class="form-group">
+                <label for="checkout-name">Nome Completo*</label>
+                <input type="text" id="checkout-name" name="name" required />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="checkout-phone">Telefone*</label>
+                  <input type="tel" id="checkout-phone" name="phone" required />
+                </div>
+                <div class="form-group">
+                  <label for="checkout-email">E-mail</label>
+                  <input type="email" id="checkout-email" name="email" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="checkout-address">Endereço de Entrega*</label>
+                <textarea
+                  id="checkout-address"
+                  name="address"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="checkout-payment">Forma de Pagamento*</label>
+                <select id="checkout-payment" name="payment" required>
+                  <option value="" selected disabled>Selecione</option>
+                  <option value="credit">Cartão de Crédito</option>
+                  <option value="debit">Cartão de Débito</option>
+                  <option value="pix">PIX</option>
+                  <option value="cash">Dinheiro</option>
+                </select>
+              </div>
+              <div
+                class="form-group"
+                id="change-container"
+                style="display: none"
+              >
+                <label for="checkout-change">Troco para</label>
+                <input
+                  type="number"
+                  id="checkout-change"
+                  name="change"
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+              <div class="form-group">
+                <label for="checkout-notes">Observações</label>
+                <textarea
+                  id="checkout-notes"
+                  name="notes"
+                  rows="2"
+                  placeholder="Instruções especiais, referências, etc."
+                ></textarea>
+              </div>
+            </form>
+            <div class="order-summary">
+              <h4>Resumo do Pedido</h4>
+              <div id="order-items-summary"></div>
+              <div class="order-total">
+                <span>Total:</span>
+                <span id="order-total-price">R$ 0,00</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline" id="cancel-order">Cancelar</button>
+            <button class="btn btn-primary" id="confirm-order">
+              Confirmar Pedido
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de Confirmação do Pedido -->
+      <div class="modal" id="order-success-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Pedido Realizado!</h3>
+            <button class="close-modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="success-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h4>Seu pedido foi realizado com sucesso!</h4>
+            <p>Número do pedido: <strong id="order-number">BH-12345</strong></p>
+            <p>Tempo estimado de entrega: <strong>30-45 minutos</strong></p>
+            <p>Em breve você receberá uma confirmação por WhatsApp.</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" id="close-success-order">
+              Entendido
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-text">
+              <h2>
+                Hambúrgueres <span class="text-highlight">Artesanais</span>
+              </h2>
+              <p class="hero-subtitle">
+                Os melhores ingredientes para o melhor sabor
+              </p>
+              <p class="hero-description">
+                Experimente nossos hambúrgueres feitos com ingredientes
+                selecionados e preparados na hora. Uma experiência de sabor
+                única!
+              </p>
+              <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">Ver Cardápio</a>
+                <a href="#delivery" class="btn btn-outline">Delivery</a>
+              </div>
+            </div>
+            <div class="hero-image">
+              <img
+                src="/assets/img/placeholders/hamburguer.jpg"
+                alt="Hambúrguer Artesanal"
+                class="animated-burger"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="hero-shape"></div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features">
+        <div class="container">
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-hamburger"></i>
+              </div>
+              <h3>Artesanal</h3>
+              <p>
+                Hambúrgueres feitos à mão, com blend exclusivo de carnes nobres.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-shipping-fast"></i>
+              </div>
+              <h3>Delivery</h3>
+              <p>Entrega rápida para você desfrutar onde quiser.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-medal"></i>
+              </div>
+              <h3>Qualidade</h3>
+              <p>
+                Ingredientes frescos e de alta qualidade para o melhor sabor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu Section -->
+      <section id="menu" class="menu-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Nosso <span class="text-highlight">Cardápio</span></h2>
+            <p>Conheça nossas deliciosas opções de hambúrgueres</p>
+          </div>
+
+          <div class="menu-filter">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="tradicional">
+              Tradicionais
+            </button>
+            <button class="filter-btn" data-filter="especial">Especiais</button>
+            <button class="filter-btn" data-filter="vegano">Veganos</button>
+            <button class="filter-btn" data-filter="acompanhamento">
+              Acompanhamentos
+            </button>
+            <button class="filter-btn" data-filter="bebida">Bebidas</button>
+          </div>
+
+          <div class="menu-grid" id="menu-items">
+            <!-- Os itens do menu serão carregados via JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Promoções Section -->
+      <section id="promocoes" class="promocoes-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Nossas <span class="text-highlight">Promoções</span></h2>
+            <p>Ofertas especiais para você aproveitar</p>
+          </div>
+
+          <div class="promocoes-slider">
+            <div class="promocao-card">
+              <div class="promocao-image">
+                <img
+                  src="/assets/img/placeholders/combo1.webp"
+                  alt="Combo Família"
+                />
+                <div class="promocao-tag">Economize 15%</div>
+              </div>
+              <div class="promocao-content">
+                <h3>Combo Família</h3>
+                <p>4 hambúrgueres, 2 porções de batata e 4 refrigerantes.</p>
+                <div class="promocao-price">
+                  <span class="old-price">R$ 120,00</span>
+                  <span class="current-price">R$ 102,00</span>
+                </div>
+                <button
+                  class="btn btn-primary add-to-cart-btn"
+                  data-id="combo-familia"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </div>
+
+            <div class="promocao-card">
+              <div class="promocao-image">
+                <img
+                  src="/assets/img/placeholders/combo2.jpg"
+                  alt="Combo Duplo"
+                />
+                <div class="promocao-tag">Leve 2, Pague 1</div>
+              </div>
+              <div class="promocao-content">
+                <h3>Combo Duplo</h3>
+                <p>2 hambúrgueres tradicionais pelo preço de 1.</p>
+                <div class="promocao-price">
+                  <span class="old-price">R$ 49,90</span>
+                  <span class="current-price">R$ 24,95</span>
+                </div>
+                <button
+                  class="btn btn-primary add-to-cart-btn"
+                  data-id="combo-duplo"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </div>
+
+            <div class="promocao-card">
+              <div class="promocao-image">
+                <img
+                  src="/assets/img/placeholders/tercaburguer.jpg"
+                  alt="Terça Feliz"
+                />
+                <div class="promocao-tag">Só às terças</div>
+              </div>
+              <div class="promocao-content">
+                <h3>Terça Feliz</h3>
+                <p>Qualquer hambúrguer com 30% de desconto às terças-feiras.</p>
+                <div class="promocao-price">
+                  <span class="current-price">30% OFF</span>
+                </div>
+                <a href="#menu" class="btn btn-primary">Ver Cardápio</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-controls">
+            <button class="slider-arrow prev" id="promo-prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slider-dots" id="promo-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <button class="slider-arrow next" id="promo-next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>
+              O que nossos <span class="text-highlight">Clientes</span> dizem
+            </h2>
+            <p>Opiniões de quem já experimentou nossos hambúrgueres</p>
+          </div>
+
+          <div class="testimonials-slider">
+            <div class="testimonial-card">
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">
+                "Melhor hambúrguer que já comi! A carne é suculenta e o pão é
+                super macio. Recomendo demais!"
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img
+                    src="/assets/img/placeholders/carlossilva.jpg"
+                    alt="Imagem do Cliente"
+                  />
+                </div>
+                <div class="author-info">
+                  <h4>Carlos Silva</h4>
+                  <p>Cliente há 2 anos</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">
+                "O hambúrguer vegano deles é incrível! Nunca imaginei que um
+                hambúrguer sem carne pudesse ser tão saboroso. Virei cliente
+                fiel."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img
+                    src="/assets/img/placeholders/anaoliveira.jpg"
+                    alt="Imagem do Cliente"
+                  />
+                </div>
+                <div class="author-info">
+                  <h4>Ana Oliveira</h4>
+                  <p>Cliente há 6 meses</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p class="testimonial-text">
+                "Atendimento excelente e hambúrgueres deliciosos. O delivery é
+                rápido e a comida chega quentinha. Vale cada centavo!"
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img
+                    src="/assets/img/placeholders/marcossantos.jpg"
+                    alt="Imagem do Cliente"
+                  />
+                </div>
+                <div class="author-info">
+                  <h4>Marcos Santos</h4>
+                  <p>Cliente há 1 ano</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-controls">
+            <button class="slider-arrow prev" id="testimonial-prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slider-dots" id="testimonial-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <button class="slider-arrow next" id="testimonial-next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Delivery Section -->
+      <section id="delivery" class="delivery-section">
+        <div class="container">
+          <div class="delivery-content">
+            <div class="delivery-text">
+              <h2>Peça para <span class="text-highlight">Delivery</span></h2>
+              <p>Receba seu hambúrguer favorito no conforto da sua casa</p>
+              <ul class="delivery-features">
+                <li><i class="fas fa-check"></i> Entrega rápida</li>
+                <li>
+                  <i class="fas fa-check"></i> Embalagem especial para manter o
+                  sabor
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Pedido pelo site ou aplicativo
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Acompanhe seu pedido em tempo
+                  real
+                </li>
+              </ul>
+              <div class="delivery-apps">
+                <a href="#" class="delivery-app">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="#" class="delivery-app">
+                  <i class="fas fa-mobile-alt"></i> Aplicativo
+                </a>
+                <a href="#" class="delivery-app">
+                  <i class="fas fa-laptop"></i> Site
+                </a>
+              </div>
+            </div>
+            <div class="delivery-image">
+              <img
+                src="/assets/img/placeholders/delivery.jpg"
+                alt="Entrega de Hambúrguer"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section id="order-now" class="cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Peça Agora Mesmo!</h2>
+            <p>
+              Use o código <span class="highlight-code">WEBPROMO</span> e ganhe
+              10% de desconto no seu primeiro pedido online.
+            </p>
+            <a href="#menu" class="btn btn-cta">Fazer Pedido</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- App Section -->
+      <section class="app-section">
+        <div class="container">
+          <div class="app-content">
+            <div class="app-text">
+              <h2>
+                Baixe Nosso <span class="text-highlight">Aplicativo</span>
+              </h2>
+              <p>Faça pedidos, ganhe pontos e receba ofertas exclusivas</p>
+              <ul class="app-features">
+                <li><i class="fas fa-star"></i> Programa de fidelidade</li>
+                <li><i class="fas fa-percent"></i> Descontos exclusivos</li>
+                <li><i class="fas fa-truck"></i> Acompanhe seu pedido</li>
+                <li>
+                  <i class="fas fa-history"></i> Pedidos anteriores com um
+                  clique
+                </li>
+              </ul>
+              <div class="app-download">
+                <a href="#" class="app-button">
+                  <i class="fab fa-google-play"></i>
+                  <span>
+                    <small>Disponível no</small>
+                    Google Play
+                  </span>
+                </a>
+                <a href="#" class="app-button">
+                  <i class="fab fa-apple"></i>
+                  <span>
+                    <small>Baixe na</small>
+                    App Store
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="app-image">
+              <img
+                src="assets/img/placeholders/imagemapp.avif"
+                alt="Aplicativo BurgerHouse"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instagram Feed Section -->
+      <section class="instagram-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Siga-nos no <span class="text-highlight">Instagram</span></h2>
+            <p>@burgerhouseoficial</p>
+          </div>
+          <div class="instagram-grid">
+            <a href="#" class="instagram-item">
+              <img src="/api/placeholder/200/200" alt="Instagram BurgerHouse" />
+              <div class="instagram-overlay">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </a>
+            <a href="#" class="instagram-item">
+              <img src="/api/placeholder/200/200" alt="Instagram BurgerHouse" />
+              <div class="instagram-overlay">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </a>
+            <a href="#" class="instagram-item">
+              <img src="/api/placeholder/200/200" alt="Instagram BurgerHouse" />
+              <div class="instagram-overlay">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </a>
+            <a href="#" class="instagram-item">
+              <img src="/api/placeholder/200/200" alt="Instagram BurgerHouse" />
+              <div class="instagram-overlay">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </a>
+            <a href="#" class="instagram-item">
+              <img src="/api/placeholder/200/200" alt="Instagram BurgerHouse" />
+              <div class="instagram-overlay">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </a>
+            <a href="#" class="instagram-item">
+              <img src="/api/placeholder/200/200" alt="Instagram BurgerHouse" />
+              <div class="instagram-overlay">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-logo">
+              <h2><span class="highlight">Burger</span>House</h2>
+              <p>Os melhores hambúrgueres artesanais da cidade.</p>
+            </div>
+            <div class="footer-links">
+              <div class="footer-column">
+                <h3>Menu</h3>
+                <ul>
+                  <li><a href="#menu">Cardápio</a></li>
+                  <li><a href="#promocoes">Promoções</a></li>
+                  <li><a href="./pages/sobre.html">Sobre Nós</a></li>
+                  <li><a href="./pages/contato.html">Contato</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Rua dos Hambúrgueres,
+                    123
+                  </li>
+                  <li><i class="fas fa-phone"></i> (11) 98765-4321</li>
+                  <li>
+                    <i class="fas fa-envelope"></i> contato@burgerhouse.com
+                  </li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3>Horários</h3>
+                <ul>
+                  <li>Segunda a Sexta: 11h - 22h</li>
+                  <li>Sábados: 11h - 23h</li>
+                  <li>Domingos: 12h - 22h</li>
+                  <li>Feriados: 12h - 21h</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+            <div class="copyright">
+              <p>&copy; 2025 BurgerHouse. Todos os direitos reservados.</p>
+            </div>
+            <div class="payment-methods">
+              <i class="fab fa-cc-visa"></i>
+              <i class="fab fa-cc-mastercard"></i>
+              <i class="fab fa-cc-amex"></i>
+              <i class="fas fa-money-bill-wave"></i>
+              <i class="fas fa-credit-card"></i>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- WhatsApp Button -->
+      <a href="#" class="whatsapp-button" id="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>

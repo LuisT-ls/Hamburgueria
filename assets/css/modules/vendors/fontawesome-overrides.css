@@ -1,0 +1,26 @@
+/**
+ * fontawesome-overrides.css
+ * Customizações para Font Awesome
+ */
+
+/* Ajustes para ícones Font Awesome, se necessário */
+.fa-custom {
+  font-size: 1.5rem;
+}
+
+/* Definições de cores personalizadas para ícones */
+.icon-primary {
+  color: var(--primary-color);
+}
+
+.icon-success {
+  color: var(--success-color);
+}
+
+.icon-warning {
+  color: var(--warning-color);
+}
+
+.icon-danger {
+  color: var(--danger-color);
+}
